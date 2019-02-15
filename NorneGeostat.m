@@ -7,9 +7,9 @@ function norne = NorneGeostat
 %
 % For more information we refer to the paper: 
 %
-% Lorentzen, R., Luo, X., Bhakta, T., Valestrand, R.: "History matching
-% Norne reservoir and petroelastic models using seismic impedance with
-% correlated noise" Submitted to SPE Journal.
+% Lorentzen, R., Luo, X., Bhakta, T., Valestrand, R.: "History Matching 
+% the Full Norne Field Model Using Seismic and Production Data", 
+% SPE Journal, January 2019. DOI: https://doi.org/10.2118/194205-PA.
 % 
 % We also ask that the above paper is cited in publications aided by this
 % code.
@@ -67,6 +67,7 @@ str = fileread('PERM_0704.prop');
 matchStr = regexp(str,'(?<=PERMX)(.*)(?=/)','match');
 s = regexprep(matchStr{1},'\s+',' ');
 k = str2num(s)';
+k = log(k);
 k(act==0) = [];
 for nr=1:dim(3)
     index=ldim*(nr-1)+1:1:ldim*nr;
